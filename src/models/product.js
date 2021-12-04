@@ -7,21 +7,15 @@ const Product = mongoose.model('products', {
         trim: true,
         required: true
     },
-    model: {
-        type: String,
-        uppercase: true,
+    price: {
+        type: Number,
         trim: true,
         required: true
     },
-    quantity: {
-        required: true,
+    stock: {
         type: Number,
         trim: true,
-        validate(value) {
-            if (value < 0) {
-                throw mongoose.Error('Value must be positive number!')
-            }
-        }
+        required:true
     }
 })
 module.exports = Product

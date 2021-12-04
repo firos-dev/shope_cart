@@ -1,0 +1,27 @@
+.main {
+  position: relative;
+}
+
+.main h3 {
+  color: #fff !important;
+}
+
+.caption {
+  font-size: 30px;
+  position: absolute;
+  top: 30%;
+  right: 80px;
+}
+
+.thin {
+  font-weight: 100 !important;
+}
+.bold {
+  font-weight: 900 !important;
+}
+
+@media (max-width: 800px) {
+  .caption {
+    font-size: 10px !important;
+  }
+}

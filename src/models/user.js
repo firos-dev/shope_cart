@@ -25,55 +25,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         minlength: 7,
         trim: true,
-        validate(value) {
-            if (value.toLowerCase().includes('password')) {
-                throw new Error('password cannot contain password!')
-            }
-        }
-    },
-    age: {
-        type: Number,
-        default: 0,
-        trim: true
-
-    },
-    tokens: [{
-        token: {
-            type: String,
-            required: true
-        }
-    }],
-    avatar: {
-        type: Buffer
     }
 }, {
     timestamps: true
 })
 
-userSchema.virtual('userTasks', {
-    ref: 'Tasks',
-    localField: '_id',
-    foreignField: 'owner'
-})
-
-//Hide private datas
-
-userSchema.methods.toJSON = function () {
-    const user = this
-
-    const userObject = user.toObject()
-
-    delete userObject.password
-    delete userObject.tokens
-    return userObject
-}
 
 userSchema.methods.generateAuthToken = async function () {
     const user = this
     const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET_CODE)
-    user.tokens = user.tokens.concat({ token })
-
-    await user.save()
 
     return token
 }
