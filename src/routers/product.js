@@ -4,7 +4,9 @@ const Product = require('../models/product')
 const auth = require('../middleware/auth')
 
 
-
+/**
+ * Product router
+ */
 router.post('/api/get/products', async (req, res) => {
   
 

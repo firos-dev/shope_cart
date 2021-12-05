@@ -33,7 +33,7 @@ function ProductCard(props) {
 
                     <Rate defaultValue={3} count={4} className='mb-1' style={{ color: '#3187ED' }} />{'(12)'}
                     
-                    <ProductSelectForm stockValue={ stock } id={id} onAddToCart={addToCartHandler}/>
+                    <ProductSelectForm stockValue={ stock } id={id} key={id} onAddToCart={addToCartHandler}/>
             </Col>
             </Row>
         </Col>

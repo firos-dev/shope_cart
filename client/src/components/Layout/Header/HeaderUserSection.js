@@ -10,14 +10,20 @@ import Register from './../../Register/Register';
 
 import axios from 'axios'
 
+
 function HeaderUserSection() {
+
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
     
+  //Auth0 Login
+  const loginHandler = () => {
+    window.location.href = 'http://localhost:3001/login'
+  }
+  
+  //Auth0 Logout
   const logoutHandler = () => {
-    return axios.post('/api/user/logout').then((response) => {
-      console.log(response);
-    })
+    window.location.href = 'http://localhost:3001/logout'
   }
 
   return (
@@ -38,12 +44,8 @@ function HeaderUserSection() {
           </button>
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item onClick={() => setShowLogin(true)}>
+          <Dropdown.Item onClick={loginHandler}>
             Login
-          </Dropdown.Item>
-
-          <Dropdown.Item onClick={() => setShowRegister(true)}>
-            Register
           </Dropdown.Item>
           <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
         </Dropdown.Menu>

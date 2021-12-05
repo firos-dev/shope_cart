@@ -4,6 +4,10 @@ import Card from "../../UI/Card";
 import ProductCard from "../ProductCard/ProductCard";
 import axios from "axios";
 
+/**
+ * using axios for api call
+ * @returns 
+ */
 function Products() {
   const [products, setProducts] = useState();
   useEffect(() => {
@@ -17,11 +21,22 @@ function Products() {
   const loadProducts = () => {
     console.log("axios");
 
+  /** Product Listing API
+   * using axios for api call
+   * @returns 
+   */
     return axios.post("/api/get/products")
+        
       .then(function (response) {
-      setProducts(response.data)
-    }).catch((e) => {
-      console.log(e);
+
+        setProducts(response.data)
+        console.log(response.data);
+        
+      })
+      .catch((e) => {
+
+        console.log(e);
+        
     })
     
   };
@@ -37,8 +52,8 @@ function Products() {
               products.map((item) => {
                 return (
                   <ProductCard
-                    id={item.id}
-                    key={item.id}
+                    id={item._id}
+                    key={item._id}
                     name={item.name}
                     stock={item.stock}
                     price={item.price}

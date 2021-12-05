@@ -18,6 +18,8 @@ const ProductSelectForm = (props) => {
     loadStock()
   })
 
+  console.log(cartCtx);
+
   const loadStock = () => {
     const item = cartCtx.items.filter(item => item.id === props.id)
     if (item.length) {

@@ -5,6 +5,12 @@ const auth = require('../middleware/auth')
 const multer = require('multer')
 const { Error } = require('mongoose')
 
+
+/**
+ * User Router
+ * This Router is not Using because user auth is now on Auth0
+ * @Note
+ */
 router.post('/api/register/user', async (req, res) => {
     const user = new User(req.body)
     try {
